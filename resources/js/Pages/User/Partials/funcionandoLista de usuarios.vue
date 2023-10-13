@@ -30,7 +30,13 @@ const orderDirection = ref('desc')
 const {users, getUsers, deleteUser} = useUsers()
 
 onMounted(() => {
-    getUsers()
+    getUsers(),
+    //console.log('montado com sucesso')
+    axios.get('/api/users1').then(response =>(
+            //console.log(response.data)
+            apiusers.value = response.data
+           //console.log(apiusers.value)
+        ))
 })
 
 const updateOrdering = (column) => {
@@ -81,10 +87,12 @@ watch(search_global, (current, previous) => {
             </h1>
 
             <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
-                Esta lista de usuarios é gerada dinamicamente com os dados da página do GLPI, caso tenha algum erro favor solicitar a atualização da lista para o suporte via chamado. 
-                Obrigado!
+                Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
+                to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
+                you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
+                ecosystem to be a breath of fresh air. We hope you love it.
             </p>
-            <div class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
+            <div class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed flex">
                 <div class="card-body shadow-sm">
                     <div class="mb-4">
                         <input v-model="search_global" type="text" placeholder="Buscar..."
@@ -119,7 +127,7 @@ watch(search_global, (current, previous) => {
                                          @click="updateOrdering('title')">
                                         <div class="font-medium text-uppercase"
                                              :class="{ 'font-bold text-blue-600': orderColumn === 'title' }">
-                                            Nome
+                                            Name
                                         </div>
                                         <div class="select-none">
                                 <span :class="{
@@ -153,25 +161,26 @@ watch(search_global, (current, previous) => {
                                     </div>
                                 </th>
                                 <th class="px-6 py-3 text-left">
-                                    <div class="flex flex-row">
-                                        <div class="font-medium text-uppercase">
-                                            Ramal
+                                    <div class="flex flex-row items-center justify-between cursor-pointer"
+                                         @click="updateOrdering('created_at')">
+                                        <div class="leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                             :class="{ 'font-bold text-blue-600': orderColumn === 'created_at' }">
+                                            Created at
+                                        </div>
+                                        <div class="select-none">
+                                <span :class="{
+                                  'text-blue-600': orderDirection === 'asc' && orderColumn === 'created_at',
+                                  'hidden': orderDirection !== '' && orderDirection !== 'asc' && orderColumn === 'created_at',
+                                }">&uarr;</span>
+                                            <span :class="{
+                                  'text-blue-600': orderDirection === 'desc' && orderColumn === 'created_at',
+                                  'hidden': orderDirection !== '' && orderDirection !== 'desc' && orderColumn === 'created_at',
+                                }">&darr;</span>
                                         </div>
                                     </div>
                                 </th>
                                 <th class="px-6 py-3 text-left">
-                                    <div class="flex flex-row">
-                                        <div class="font-medium text-uppercase">
-                                            Setor
-                                        </div>
-                                    </div>
-                                </th>
-                                <th class="px-6 py-3 text-left">
-                                    <div class="flex flex-row">
-                                        <div class="font-medium text-uppercase">
-                                            Cargo
-                                        </div>
-                                    </div>
+                                    Actions
                                 </th>
                             </tr>
                             </thead>
@@ -181,19 +190,21 @@ watch(search_global, (current, previous) => {
                                     {{ post.id }}
                                 </td>
                                 <td class="px-6 py-4 text-sm">
-                                    {{ post.name }} 
+                                    {{ post.name }}
                                 </td>
                                 <td class="px-6 py-4 text-sm">
                                     {{ post.email }}
                                 </td>
                                 <td class="px-6 py-4 text-sm">
-                                    {{ post.extension }}
+                                    {{ post.created_at }}
                                 </td>
                                 <td class="px-6 py-4 text-sm">
-                                    {{ post.sector }}
-                                </td>
-                                <td class="px-6 py-4 text-sm">
-                                    {{ post.jobtitle }}
+                                    <a
+                                                 :to="{ name: 'users.edit', params: { id: post.id } }"
+                                                 class="badge bg-primary">Edit
+                                    </a>
+                                    <a href="#"  @click.prevent="deleteUser(post.id)"
+                                       class="ms-2 badge bg-danger">Delete</a>
                                 </td>
                             </tr>
                             </tbody>

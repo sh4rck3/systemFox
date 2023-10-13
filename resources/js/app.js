@@ -9,6 +9,9 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 //personalizados
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import { TailwindPagination } from 'laravel-vue-pagination';
+import ToastPlugin from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-bootstrap.css';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -20,6 +23,8 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue)
             .use(VueSweetalert2)
+            .component('Pagination', TailwindPagination)
+            .use(ToastPlugin)
             .mount(el);
     },
     progress: {

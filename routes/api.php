@@ -14,10 +14,14 @@ use App\Http\Controllers\Api\UserController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/users1', [UserController::class, 'index'])->name('users.index');
+Route::get('/users1', [UserController::class, 'indexold'])->name('users.indexold');
+
 Route::group(['middleware' => ['auth:sanctum', 'throttle:10000,1']], function () {
-    //usuarios
+    //users from list employees
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    //Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    //users from list system users
+    Route::get('/userssystem', [UserController::class, 'userssystem'])->name('users.userssystem');
+    //atualization of users from api
+    Route::get('/usersupdate', [UserController::class, 'usersupdate'])->name('users.usersupdate');
 });
 

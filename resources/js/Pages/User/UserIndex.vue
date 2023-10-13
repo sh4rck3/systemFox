@@ -1,14 +1,60 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Content from './Partials/Content.vue';
+import { usePage } from '@inertiajs/vue3'
+import { computed, inject } from 'vue'
+
+const page = usePage()
+const swal = inject('$swal')
+const toast = inject('$toast')
+
+const pagePermission = computed(() => page.props.user.permissions)
+const pageRole = computed(() => page.props.user.roles)
+
+//console.log(pageRole.value)
+const updatingList = async () =>{
+    //console.log('updating list')
+    toast.success('Atualizando lista de usuários, aguarde alguns instantes...', {position: 'top-right'})
+    axios.get('/api/usersupdate')
+    .then(response => {
+        console.log(response.data),
+        swal({
+                    icon: 'success',
+                    title: 'Atualizado com sucesso!'
+                })
+    })
+    .catch(error => {
+        console.log(error),
+        swal({
+                    icon: 'error',
+                    title: 'Lista nao foi atualizada!'
+                })
+    })
+}
 </script>
 
 <template>
     <AppLayout title="Usuários">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                Usuários
-            </h2>
+            <div class="flex justify-between">
+                <div>
+                    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                        Usuários
+                    </h2>
+                </div>
+                <div>
+                    <a 
+                    v-if="pageRole.includes('admin')"
+                    @click="updatingList"
+                    href="#">
+                        <button class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded align-middle">
+                            Atualizar usuarios
+                        </button>
+                    </a>
+                </div>
+
+            </div>
+           
         </template>
 
         <div class="py-12">
