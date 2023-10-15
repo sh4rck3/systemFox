@@ -27,6 +27,11 @@ const submit = () => {
         onFinish: () => form.reset('password'),
     });
 };
+
+const fcnreturn = () => {
+    window.history.back();
+}
+
 </script>
 
 <template>
@@ -57,7 +62,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Senha" />
                 <TextInput
                     id="password"
                     v-model="form.password"
@@ -72,17 +77,23 @@ const submit = () => {
             <div class="block mt-4">
                 <label class="flex items-center">
                     <Checkbox v-model:checked="form.remember" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
+                    <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">Lembrar-me</span>
                 </label>
             </div>
-
+            
             <div class="flex items-center justify-end mt-4">
+                <button 
+                class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-red-700 focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 mr-14"
+                v-on:click="fcnreturn()" >
+                    Voltar
+                </button>
+
                 <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                    Forgot your password?
+                    Esqueceu sua senha?
                 </Link>
 
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+                    Entrar
                 </PrimaryButton>
             </div>
         </form>

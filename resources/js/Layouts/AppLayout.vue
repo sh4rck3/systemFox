@@ -7,6 +7,10 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import { usePage } from '@inertiajs/vue3'
+import { computed } from 'vue'
+
+
 
 defineProps({
     title: String,
@@ -21,6 +25,10 @@ const switchToTeam = (team) => {
         preserveState: false,
     });
 };
+
+const page = usePage()
+const pageRole = computed(() => page.props.user.roles)
+console.log(pageRole.value)
 
 const logout = () => {
     router.post(route('logout'));
@@ -141,14 +149,18 @@ const logout = () => {
                                     <template #content>
                                         <!-- Account Management -->
                                         <div class="block px-4 py-2 text-xs text-gray-400">
-                                            Manage Account
+                                            Configuração de conta
                                         </div>
 
-                                        <DropdownLink :href="route('profile.show')">
-                                            Profile
+                                        <DropdownLink 
+                                        
+                                        :href="route('profile.show')">
+                                            Perfil
                                         </DropdownLink>
 
-                                        <DropdownLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')">
+                                        <DropdownLink 
+                                        v-if="pageRole.includes('admin')" 
+                                        :href="route('api-tokens.index')">
                                             API Tokens
                                         </DropdownLink>
 
@@ -157,7 +169,7 @@ const logout = () => {
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <DropdownLink as="button">
-                                                Log Out
+                                                Sair
                                             </DropdownLink>
                                         </form>
                                     </template>
