@@ -121,7 +121,7 @@ const fcnlogin = () => {
                                 class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 hover:scale-110"
                                 href="/information"
                                 as="a"
-                                target="_blank">
+                                target="">
                                     Ramais
                                 </NavLinkHome>
                             </div>
@@ -225,48 +225,18 @@ const fcnlogin = () => {
                                         <div class="w-60">
                                             <!-- Team Management -->
                                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                                Links jurídicos
+                                                Links Administrativos
                                             </div>
                                             <!-- Team Settings -->
                                             <DropdownLinkHome  
-                                                as="a"  href="https://safrajuridico.safra.com.br/Login?ReturnUrl=%2fJuridico%3fi%3dJURIDICO%26m%3dMAIN&i=JURIDICO&m=MAIN"
+                                                as="a"  href="https://portal.ciee.org.br/"
                                                 target="_blank">
-                                                Benner
+                                                CIEE
                                             </DropdownLinkHome>
                                             <DropdownLinkHome  
-                                                as="a"  href="http://caixago.dunice.srv.br/"
+                                                as="a"  href="http://www.lignetsafra.com.br/"
                                                 target="_blank">
-                                                Caixa GO
-                                            </DropdownLinkHome>
-                                            <DropdownLinkHome  
-                                                as="a"  href="https://www.dponet.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=responsivo+institucional+ad01+copy01&utm_content=home+institucional&gclid=Cj0KCQjwu-KiBhCsARIsAPztUF0rJc3eBnV9UEcA2RWgBnQm0qdfUGuNo0qHHLC8T-EgtJ1BQp8aAyMaAkwREALw_wcB"
-                                                target="_blank">
-                                                DPO Net
-                                            </DropdownLinkHome>
-                                            <DropdownLinkHome  
-                                                as="a"  href="https://intouch.unitfour.com.br/"
-                                                target="_blank">
-                                                Intouch
-                                            </DropdownLinkHome>
-                                            <DropdownLinkHome  
-                                                as="a"  href="https://scdnetweb.safra.com.br/login2.aspx"
-                                                target="_blank">
-                                                Safra Financeira
-                                            </DropdownLinkHome>
-                                            <DropdownLinkHome  
-                                                as="a"  href="https://lemitti.com/home"
-                                                target="_blank">
-                                                Lemit
-                                            </DropdownLinkHome>
-                                            <DropdownLinkHome  
-                                                as="a"  href="https://molicar.com.br/"
-                                                target="_blank">
-                                                Molicar
-                                            </DropdownLinkHome>
-                                            <DropdownLinkHome  
-                                                as="a"  href="https://veiculos.fipe.org.br/"
-                                                target="_blank">
-                                                Tabela Fipe
+                                                LIGNET SAFRA
                                             </DropdownLinkHome>
                                         </div>
                                     </template>

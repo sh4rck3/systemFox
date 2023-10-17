@@ -25,4 +25,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
     //access route to the user list
     Route::get('/user', [UserwebController::class, 'index'])->name('user');
+    //acess router user local
+    Route::get('/userlocal', [UserwebController::class, 'userlocal'])->name('userlocal');
 });

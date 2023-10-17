@@ -76,9 +76,7 @@ watch(search_global, (current, previous) => {
         <div class="">
             <!-- <ApplicationLogo class="block h-12 w-auto" /> -->
             <div class="relative sm:flex sm:justify-center sm:items-center">
-                <div class="mr-10">
-                    <Icon name="fox-logo"  class="w-10 h-10" />
-                </div>
+                
                 <div>
                     <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
                         Bem vindo a pagina de usuários!

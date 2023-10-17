@@ -6,16 +6,15 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
     <div>
         <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
             <ApplicationLogo class="block h-12 w-auto" />
-
+            
             <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
-                Welcome to your Jetstream application!
+                Bem vindo a sistema FOX
             </h1>
 
             <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
-                Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-                to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-                you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-                ecosystem to be a breath of fresh air. We hope you love it.
+                Este sistema usa como base de desenvolvimento fluxos de trabalhos de diferentes setores da empresa, desta forma
+                as atualizações do sistema veem conforme a necessidade de cada setor, ou cheguem até nós ideias novas de funcionamento
+                para o sistema. Desta forma vale ressaltar que a colaboração de cada mebro da equipe de TI e bem vinda.
             </p>
         </div>
 
@@ -26,17 +25,18 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                     </svg>
                     <h2 class="ml-3 text-xl font-semibold text-gray-900 dark:text-white">
-                        <a href="https://laravel.com/docs">Documentation</a>
+                        <a href="https://laravel.com/docs">Documentação FOX</a>
                     </h2>
                 </div>
 
                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                    Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.
+                    Explicação mais detalhada de funcionamento de cada funcionalidade do sistema tendo como foco o legado de transferência de conhecimento e informações 
+                    do sistema, trazendo um apanhado sobre o funcionamento do sistema e suas funcionalidades.
                 </p>
 
                 <p class="mt-4 text-sm">
                     <a href="https://laravel.com/docs" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
-                        Explore the documentation
+                        Explore a documentação
 
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ml-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
                             <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
@@ -81,7 +81,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
                 </div>
 
                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                    Laravel Jetstream is built with Tailwind, an amazing utility first CSS framework that doesn't get in your way. You'll be amazed how easily you can build and maintain fresh, modern designs with this wonderful framework at your fingertips.
+                    A base de layout visual desta ferramente e o framework css Tailwind, que permite a criação de componentes de forma mais rápida e eficiente.
                 </p>
             </div>
 
@@ -91,12 +91,13 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                     </svg>
                     <h2 class="ml-3 text-xl font-semibold text-gray-900 dark:text-white">
-                        Authentication
+                        Autenticação e acessos
                     </h2>
                 </div>
 
                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                    Authentication and registration views are included with Laravel Jetstream, as well as support for user email verification and resetting forgotten passwords. So, you're free to get started with what matters most: building your application.
+                    Para controle de níveis de usuario, e Autenticação da API foi utiliado a tecnologia que se integra ao laravel, chamado Jet Stream, que permite a criação de novos grupos e permissões, facilitando o controle
+                    de acesso a cada funcionalidade do sistema.
                 </p>
             </div>
         </div>

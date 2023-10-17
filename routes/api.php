@@ -19,11 +19,13 @@ Route::get('/users1', [UserController::class, 'indexold'])->name('users.indexold
 Route::get('/usershome', [UserController::class, 'indexhome'])->name('users.indexhome');
 
 Route::group(['middleware' => ['auth:sanctum', 'throttle:10000,1']], function () {
-    //users from list employees
+    //users from list employees GLPI
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     //users from list system users
     Route::get('/userssystem', [UserController::class, 'userssystem'])->name('users.userssystem');
     //atualization of users from api
     Route::get('/usersupdate', [UserController::class, 'usersupdate'])->name('users.usersupdate');
+     //users from list employees local
+     Route::get('/userslocal', [UserController::class, 'userslocal'])->name('users.userslocal');
 });
 

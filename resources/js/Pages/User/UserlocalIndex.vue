@@ -39,25 +39,24 @@ const updatingList = async () =>{
             <div class="flex justify-between">
                 <div>
                     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                        Usuários do GLPI
+                        Usuários do FOX
                     </h2>
                 </div>
                 
                 <div>
                     <a
-                    href="/userlocal">
+                    href="/user">
                         <button class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded align-middle">
-                            Listar usuarios FOX
+                            Listar usuários GLPI
                         </button>
                     </a>
-                    <a 
-                    v-if="pageRole.includes('admin')"
-                    @click="updatingList"
+                    <a
                     href="#">
                         <button class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded align-middle">
-                            Atualizar usuarios
+                            Adicionar usuario
                         </button>
                     </a>
+                   
                 </div>
 
             </div>

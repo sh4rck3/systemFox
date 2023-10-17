@@ -16,6 +16,11 @@ class UserwebController extends Controller
         return Inertia::render('User/UserIndex');
     }
 
+    public function userlocal()
+    {
+        return Inertia::render('User/UserlocalIndex');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
