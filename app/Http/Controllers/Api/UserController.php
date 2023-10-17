@@ -48,6 +48,38 @@ class UserController extends Controller
             return EmployeeResource::collection($users);
     }
 
+    public function indexhome()
+    {
+        //return UserResource::collection(User::all());
+        $orderColumn = request('order_column', 'created_at');
+        if (!in_array($orderColumn, ['id', 'name', 'created_at'])) {
+            $orderColumn = 'created_at';
+        }
+        $orderDirection = request('order_direction', 'desc');
+        if (!in_array($orderDirection, ['asc', 'desc'])) {
+            $orderDirection = 'desc';
+        }
+        $users = Employee::
+        when(request('search_id'), function ($query) {
+            $query->where('id', request('search_id'));
+        })
+            //->where('status', '!=', '0')
+            ->when(request('search_title'), function ($query) {
+                $query->where('name', 'like', '%'.request('search_title').'%');
+            })
+            ->when(request('search_global'), function ($query) {
+                $query->where(function($q) {
+                    $q->where('id', request('search_global'))
+                        ->orWhere('name', 'like', '%'.request('search_global').'%');
+
+                });
+            })
+            ->orderBy($orderColumn, $orderDirection)
+            ->paginate(5);
+
+            return EmployeeResource::collection($users);
+    }
+
     public function userssystem()
     {
         return UserResource::collection(User::all());
