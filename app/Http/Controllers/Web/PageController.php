@@ -31,4 +31,9 @@ class PageController extends Controller
         return Inertia::render('Information');
         
     }
+    public function extension()
+    {
+        return Inertia::render('Extension');
+        
+    }
 }

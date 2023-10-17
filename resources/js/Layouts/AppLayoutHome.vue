@@ -4,7 +4,7 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import Banner from '@/Components/Banner.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLinkHome from '@/Components/DropdownLinkHome.vue';
-import NavLink from '@/Components/NavLink.vue';
+import NavLinkHome from '@/Components/NavLinkHome.vue';
 
 
 
@@ -35,28 +35,24 @@ const fcnlogin = () => {
                                 </svg>
                             </div>
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink 
-                                href="https://glpi.dunice.com.br/" 
-                                
-                                >
+                            <div class="space-x-8 sm:-my-px sm:flex mr-4 text-gray-300">
+                                <NavLinkHome 
+                                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 hover:scale-110"
+                                href="https://glpi.dunice.com.br/"
+                                as="a"
+                                target="_blank">
                                     Chamados
-                                </NavLink>
+                                </NavLinkHome>
                             </div>
-                             <!-- Navigation Links user-->
-                             <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('user')" :active="route().current('user')">
-                                    Usuários
-                                </NavLink>
-                            </div>
-                            <!-- Navigation Links user-->
-                            <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            
+                            <!-- Navigation Links Cobranca-->
+                            <div class="space-x-8 sm:-my-px sm:flex">
                                 <Dropdown  align="right" width="60" class="m-4" style="margin-left: -20px;">
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">
                                             <button 
                                             type="button" 
-                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md hover:scale-110 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
                                                 Cobrança
                                                 <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
@@ -78,38 +74,291 @@ const fcnlogin = () => {
                                                 Central Nexcore
                                             </DropdownLinkHome>
                                             <DropdownLinkHome  
-                                                as="a"  href="https://duniceemarcon.cloudnexcore.com.br/ncall/main.php?inicio=1"
+                                                as="a"  href="https://buscacepinter.correios.com.br/app/endereco/index.php"
                                                 target="_blank">
-                                                Central Nexcore
+                                                Busca CEP
                                             </DropdownLinkHome>
                                             <DropdownLinkHome  
-                                                as="a"  href="https://duniceemarcon.cloudnexcore.com.br/ncall/main.php?inicio=1"
+                                                as="a"  href="https://172.16.1.121/"
                                                 target="_blank">
-                                                Central Nexcore
+                                                Central Telef. DMA
                                             </DropdownLinkHome>
                                             <DropdownLinkHome  
-                                                as="a"  href="https://duniceemarcon.cloudnexcore.com.br/ncall/main.php?inicio=1"
+                                                as="a"  href="https://intouch.unitfour.com.br/"
                                                 target="_blank">
-                                                Central Nexcore
+                                                Intouch
                                             </DropdownLinkHome>
                                             <DropdownLinkHome  
-                                                as="a"  href="https://duniceemarcon.cloudnexcore.com.br/ncall/main.php?inicio=1"
+                                                as="a"  href="https://scdnetweb.safra.com.br/login2.aspx"
                                                 target="_blank">
-                                                Central Nexcore
+                                                Safra Financeira
                                             </DropdownLinkHome>
                                             <DropdownLinkHome  
-                                                as="a"  href="https://duniceemarcon.cloudnexcore.com.br/ncall/main.php?inicio=1"
+                                                as="a"  href="https://lemitti.com/home"
                                                 target="_blank">
-                                                Central Nexcore
+                                                Lemit
                                             </DropdownLinkHome>
                                             <DropdownLinkHome  
-                                                as="a"  href="https://duniceemarcon.cloudnexcore.com.br/ncall/main.php?inicio=1"
+                                                as="a"  href="https://molicar.com.br/"
                                                 target="_blank">
-                                                Central Nexcore
+                                                Molicar
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://veiculos.fipe.org.br/"
+                                                target="_blank">
+                                                Tabela Fipe
                                             </DropdownLinkHome>
                                         </div>
                                     </template>
                                 </Dropdown>
+                            </div>
+
+                             <!-- Ponto Ramais -->
+                             <div class="space-x-8 sm:-my-px sm:flex mr-4 text-gray-300" style="margin-left: -15px;">
+                                <NavLinkHome 
+                                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 hover:scale-110"
+                                href="/extension"
+                                as="a"
+                                target="_blank">
+                                    Ramais
+                                </NavLinkHome>
+                            </div>
+
+                             <!-- Navigation Links Juridico-->
+                             <div class="space-x-8 sm:-my-px sm:flex">
+                                <Dropdown  align="right" width="60" class="m-4" style="margin-left: -20px;">
+                                    <template #trigger>
+                                        <span class="inline-flex rounded-md">
+                                            <button 
+                                            type="button" 
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md hover:scale-110 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
+                                                Jurídico
+                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </template>
+
+                                    <template #content>
+                                        <div class="w-60">
+                                            <!-- Team Management -->
+                                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                                Links jurídicos
+                                            </div>
+                                            <!-- Team Settings -->
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://safrajuridico.safra.com.br/Login?ReturnUrl=%2fJuridico%3fi%3dJURIDICO%26m%3dMAIN&i=JURIDICO&m=MAIN"
+                                                target="_blank">
+                                                Benner
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="http://caixago.dunice.srv.br/"
+                                                target="_blank">
+                                                Caixa GO
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://www.dponet.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=responsivo+institucional+ad01+copy01&utm_content=home+institucional&gclid=Cj0KCQjwu-KiBhCsARIsAPztUF0rJc3eBnV9UEcA2RWgBnQm0qdfUGuNo0qHHLC8T-EgtJ1BQp8aAyMaAkwREALw_wcB"
+                                                target="_blank">
+                                                DPO Net
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://intouch.unitfour.com.br/"
+                                                target="_blank">
+                                                Intouch
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://scdnetweb.safra.com.br/login2.aspx"
+                                                target="_blank">
+                                                Safra Financeira
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://lemitti.com/home"
+                                                target="_blank">
+                                                Lemit
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://molicar.com.br/"
+                                                target="_blank">
+                                                Molicar
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://veiculos.fipe.org.br/"
+                                                target="_blank">
+                                                Tabela Fipe
+                                            </DropdownLinkHome>
+                                        </div>
+                                    </template>
+                                </Dropdown>
+                            </div>
+
+                             <!-- Ponto online -->
+                             <div class="space-x-8 sm:-my-px sm:flex mr-4 text-gray-300" style="margin-left: -15px;">
+                                <NavLinkHome 
+                                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 hover:scale-110"
+                                href="https://app.dixiponto.com.br/dixiponto/login.jsf"
+                                as="a"
+                                target="_blank">
+                                    Ponto Online
+                                </NavLinkHome>
+                            </div>
+
+                            <!-- Navigation Links Departamento pessoal-->
+                            <div class="space-x-8 sm:-my-px sm:flex">
+                                <Dropdown  align="right" width="60" class="m-4" style="margin-left: -20px;">
+                                    <template #trigger>
+                                        <span class="inline-flex rounded-md">
+                                            <button 
+                                            type="button" 
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md hover:scale-110 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
+                                                Dep. Pessoal
+                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </template>
+
+                                    <template #content>
+                                        <div class="w-60">
+                                            <!-- Team Management -->
+                                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                                Links jurídicos
+                                            </div>
+                                            <!-- Team Settings -->
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://safrajuridico.safra.com.br/Login?ReturnUrl=%2fJuridico%3fi%3dJURIDICO%26m%3dMAIN&i=JURIDICO&m=MAIN"
+                                                target="_blank">
+                                                Benner
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="http://caixago.dunice.srv.br/"
+                                                target="_blank">
+                                                Caixa GO
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://www.dponet.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=responsivo+institucional+ad01+copy01&utm_content=home+institucional&gclid=Cj0KCQjwu-KiBhCsARIsAPztUF0rJc3eBnV9UEcA2RWgBnQm0qdfUGuNo0qHHLC8T-EgtJ1BQp8aAyMaAkwREALw_wcB"
+                                                target="_blank">
+                                                DPO Net
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://intouch.unitfour.com.br/"
+                                                target="_blank">
+                                                Intouch
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://scdnetweb.safra.com.br/login2.aspx"
+                                                target="_blank">
+                                                Safra Financeira
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://lemitti.com/home"
+                                                target="_blank">
+                                                Lemit
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://molicar.com.br/"
+                                                target="_blank">
+                                                Molicar
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://veiculos.fipe.org.br/"
+                                                target="_blank">
+                                                Tabela Fipe
+                                            </DropdownLinkHome>
+                                        </div>
+                                    </template>
+                                </Dropdown>
+                            </div>
+
+                             <!-- Ponto Aniversariantes -->
+                             <div class="space-x-8 sm:-my-px sm:flex mr-4 text-gray-300" style="margin-left: -15px;">
+                                <NavLinkHome 
+                                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 hover:scale-110"
+                                href="https://app.dixiponto.com.br/dixiponto/login.jsf"
+                                as="a"
+                                target="_blank">
+                                    Aniversariantes
+                                </NavLinkHome>
+                            </div>
+
+                            <!-- Navigation Links WhatsApp-->
+                            <div class="space-x-8 sm:-my-px sm:flex">
+                                <Dropdown  align="right" width="60" class="m-4" style="margin-left: -20px;">
+                                    <template #trigger>
+                                        <span class="inline-flex rounded-md">
+                                            <button 
+                                            type="button" 
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md hover:scale-110 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
+                                                WhatsApp
+                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </template>
+
+                                    <template #content>
+                                        <div class="w-60">
+                                            <!-- Team Management -->
+                                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                                Links jurídicos
+                                            </div>
+                                            <!-- Team Settings -->
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://safrajuridico.safra.com.br/Login?ReturnUrl=%2fJuridico%3fi%3dJURIDICO%26m%3dMAIN&i=JURIDICO&m=MAIN"
+                                                target="_blank">
+                                                Benner
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="http://caixago.dunice.srv.br/"
+                                                target="_blank">
+                                                Caixa GO
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://www.dponet.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=responsivo+institucional+ad01+copy01&utm_content=home+institucional&gclid=Cj0KCQjwu-KiBhCsARIsAPztUF0rJc3eBnV9UEcA2RWgBnQm0qdfUGuNo0qHHLC8T-EgtJ1BQp8aAyMaAkwREALw_wcB"
+                                                target="_blank">
+                                                DPO Net
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://intouch.unitfour.com.br/"
+                                                target="_blank">
+                                                Intouch
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://scdnetweb.safra.com.br/login2.aspx"
+                                                target="_blank">
+                                                Safra Financeira
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://lemitti.com/home"
+                                                target="_blank">
+                                                Lemit
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://molicar.com.br/"
+                                                target="_blank">
+                                                Molicar
+                                            </DropdownLinkHome>
+                                            <DropdownLinkHome  
+                                                as="a"  href="https://veiculos.fipe.org.br/"
+                                                target="_blank">
+                                                Tabela Fipe
+                                            </DropdownLinkHome>
+                                        </div>
+                                    </template>
+                                </Dropdown>
+                            </div>
+
+                             <!-- Ponto Aniversariantes -->
+                             <div class="space-x-8 sm:-my-px sm:flex mr-4 text-gray-300" style="margin-left: -15px;">
+                                <NavLinkHome 
+                                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 hover:scale-110"
+                                href="https://app.dixiponto.com.br/dixiponto/login.jsf"
+                                as="a"
+                                target="_blank">
+                                    SMS
+                                </NavLinkHome>
                             </div>
                         </div>
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -117,10 +366,10 @@ const fcnlogin = () => {
 
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
-                                <span class="inline-flex rounded-md">
+                                <span class="inline-flex rounded-md hover:scale-110">
                                         <button
                                         type="submit"
-                                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150"
+                                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md hover:scale-110 text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150"
                                         v-on:click="fcnlogin()">
                                             Entrar
                                         </button>

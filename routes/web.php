@@ -19,6 +19,7 @@ use App\Http\Controllers\Web\UserwebController;
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/information', [PageController::class, 'information'])->name('information');
+Route::get('/extension', [PageController::class, 'extension'])->name('extension');
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     //access route to the dashboard
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
