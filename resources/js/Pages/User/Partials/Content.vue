@@ -195,6 +195,9 @@ watch(search_global, (current, previous) => {
                                 <td class="px-6 py-4 text-sm">
                                     {{ post.jobtitle }}
                                 </td>
+                                <td class="px-6 py-4 text-sm">
+                                    {{ post.document }}
+                                </td>
                             </tr>
                             </tbody>
                         </table>

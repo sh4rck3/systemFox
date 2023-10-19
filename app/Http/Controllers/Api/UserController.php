@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Response;
 use App\Models\Employee;
 use App\Http\Resources\EmployeeResource;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class UserController extends Controller
 {
@@ -27,25 +31,26 @@ class UserController extends Controller
         if (!in_array($orderDirection, ['asc', 'desc'])) {
             $orderDirection = 'desc';
         }
-        $users = Employee::
+        $users = User::
         when(request('search_id'), function ($query) {
             $query->where('id', request('search_id'));
         })
             //->where('status', '!=', '0')
             ->when(request('search_title'), function ($query) {
                 $query->where('name', 'like', '%'.request('search_title').'%');
+                
             })
             ->when(request('search_global'), function ($query) {
                 $query->where(function($q) {
-                    $q->where('id', request('search_global'))
-                        ->orWhere('name', 'like', '%'.request('search_global').'%');
+                    $q->where('name', 'like', '%'.request('search_global').'%')
+                        ->orWhere('jobtitle', 'like', '%'.request('search_global').'%');
 
                 });
             })
             ->orderBy($orderColumn, $orderDirection)
             ->paginate(10);
 
-            return EmployeeResource::collection($users);
+            return UserResource::collection($users);
     }
 
     public function userslocal()
@@ -179,11 +184,10 @@ class UserController extends Controller
         $users = $response;
 
         foreach ($users as $key => $user) {
-            if($this->employeecheck($user) == false){
-
-                $this->employeeadd($user);
+            if($this->usercheck($user) == false){
+                $this->useradd($user);
             }else{
-                $this->employeeupdate($user);
+                $this->userupdate($user);
             }
         }
 
@@ -195,6 +199,59 @@ class UserController extends Controller
         
 
         
+    }
+    //firts step: check if user exists in local database
+    public function usercheck($user)
+    {
+        $employee = User::where('email', $user['email'])->first();
+        if($employee){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //if user not exists in local database, add user with permissions and roles
+    public function useradd($user)
+    {
+        $valuesstr = array(".", "-");
+        $hashpassword = str_replace($valuesstr, "", $user['foxcpffield']);
+
+        if($user['email'] == 'luccas.ricieri@dunice.adv.br'){
+            $role = 'admin';
+        }else{
+            $role = 'standard';
+        }
+
+            $useradd = new User();
+            $useradd->email = $user['email'];
+            $useradd->status = $user['is_active'];
+            $useradd->extension = $user['phone'];
+            $useradd->name = $user['firstname'] . '' . $user['realname'];
+            $useradd->jobtitle = $user['name'];
+            $useradd->sector = $user['completename'];
+            $useradd->document = $user['foxcpffield'];
+            $useradd->birthday = $user['foxdatadenascimentofield'];
+            $useradd->password = Hash::make($hashpassword);
+            $useradd->assignRole($role);
+            $useradd->save();
+    }
+    //if user exists in local database, update user
+    public function userupdate($user)
+    {
+        $userupdate = User::where('email', $user['email'])
+                ->where('status', '=', '1')
+                ->first();
+        if($userupdate){
+            $userupdate->email = $user['email'];
+            $userupdate->status = $user['is_active'];
+            $userupdate->extension = $user['phone'];
+            $userupdate->name = $user['firstname'] . '' . $user['realname'];
+            $userupdate->jobtitle = $user['name'];
+            $userupdate->sector = $user['completename'];
+            $userupdate->document = $user['foxcpffield'];
+            $userupdate->birthday = $user['foxdatadenascimentofield'];
+            $userupdate->save();
+        }
     }
 
     public function employeeadd($user)
@@ -211,6 +268,8 @@ class UserController extends Controller
             $employee->save();
     }
 
+   
+
     public function employeecheck($user)
     {
         $employee = Employee::where('email', $user['email'])->first();
@@ -220,6 +279,8 @@ class UserController extends Controller
             return false;
         }
     }
+
+    
 
     public function employeeupdate($user)
     {

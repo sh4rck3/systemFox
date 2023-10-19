@@ -63,7 +63,9 @@ const logout = () => {
                                 </NavLink>
                             </div>
                              <!-- Navigation Links user-->
-                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                             <div
+                             v-if="pageRole.includes('admin')"
+                             class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('user')" :active="route().current('user') || route().current('userlocal')">
                                     Usuários
                                 </NavLink>
