@@ -39,7 +39,7 @@ const updatingList = async () =>{
             <div class="flex justify-between">
                 <div>
                     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                        Usuários do GLPI
+                        Usuários Ativos
                     </h2>
                 </div>
                 
@@ -47,7 +47,7 @@ const updatingList = async () =>{
                     <a
                     href="/userlocal">
                         <button class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded align-middle">
-                            Listar usuarios FOX
+                            Listar inativos
                         </button>
                     </a>
                     <a 

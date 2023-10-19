@@ -1,6 +1,6 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import Content from './Partials/Content.vue';
+import Content from './Partials/Contentlocal.vue';
 import { usePage } from '@inertiajs/vue3'
 import { computed, inject } from 'vue'
 
@@ -39,7 +39,7 @@ const updatingList = async () =>{
             <div class="flex justify-between">
                 <div>
                     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                        Usuários do FOX
+                        Usuários Inativos
                     </h2>
                 </div>
                 
@@ -47,13 +47,7 @@ const updatingList = async () =>{
                     <a
                     href="/user">
                         <button class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded align-middle">
-                            Listar usuários GLPI
-                        </button>
-                    </a>
-                    <a
-                    href="#">
-                        <button class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded align-middle">
-                            Adicionar usuario
+                            Voltar para ativos
                         </button>
                     </a>
                    

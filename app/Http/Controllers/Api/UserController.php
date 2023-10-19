@@ -47,6 +47,7 @@ class UserController extends Controller
 
                 });
             })
+            ->where('status', '!=', '0')
             ->orderBy($orderColumn, $orderDirection)
             ->paginate(10);
 
@@ -64,7 +65,7 @@ class UserController extends Controller
         if (!in_array($orderDirection, ['asc', 'desc'])) {
             $orderDirection = 'desc';
         }
-        $users = Employee::
+        $users = User::
         when(request('search_id'), function ($query) {
             $query->where('id', request('search_id'));
         })
@@ -74,11 +75,12 @@ class UserController extends Controller
             })
             ->when(request('search_global'), function ($query) {
                 $query->where(function($q) {
-                    $q->where('id', request('search_global'))
-                        ->orWhere('name', 'like', '%'.request('search_global').'%');
+                    $q->where('name', 'like', '%'.request('search_global').'%')
+                        ->orWhere('jobtitle', 'like', '%'.request('search_global').'%');
 
                 });
             })
+            ->where('status', '=', '0')
             ->orderBy($orderColumn, $orderDirection)
             ->paginate(10);
 
@@ -239,7 +241,7 @@ class UserController extends Controller
     public function userupdate($user)
     {
         $userupdate = User::where('email', $user['email'])
-                ->where('status', '=', '1')
+                //->where('status', '=', '1')
                 ->first();
         if($userupdate){
             $userupdate->email = $user['email'];

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { onMounted, ref, inject, computed, watch } from 'vue';
 import Icon from '@/Components/Icon.vue';
 import { usePage } from '@inertiajs/vue3'
-import useUsers from '../../../composables/users'
+import useUsers from '../../../composables/userslocal'
 
 
 const page = usePage()
