@@ -15,16 +15,23 @@ const pageRole = computed(() => page.props.user.roles)
 const updatingList = async () =>{
     //console.log('updating list')
     toast.success('Atualizando lista de usuários, aguarde alguns instantes...', {position: 'top-right'})
+    swal({
+        title: 'Atualizando contatos!',
+        html: 'Aguarde alguns instantes...',
+        timer: 20000,
+        timerProgressBar: true,
+        didOpen: () => {
+            swal.showLoading()
+        }
+        })
     axios.get('/api/usersupdate')
     .then(response => {
-        console.log(response.data),
         swal({
                     icon: 'success',
                     title: 'Atualizado com sucesso!'
                 })
     })
     .catch(error => {
-        console.log(error),
         swal({
                     icon: 'error',
                     title: 'Lista nao foi atualizada!'

@@ -17,6 +17,8 @@ use App\Http\Controllers\Api\UserController;
 Route::get('/users1', [UserController::class, 'indexold'])->name('users.indexold');
 //users from list employees
 Route::get('/usershome', [UserController::class, 'indexhome'])->name('users.indexhome');
+//birthday users
+Route::get('/birthday', [UserController::class, 'birthday'])->name('users.birthday');
 
 Route::group(['middleware' => ['auth:sanctum', 'throttle:10000,1']], function () {
     //users from list employees GLPI

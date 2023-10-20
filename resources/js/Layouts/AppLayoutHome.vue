@@ -247,7 +247,7 @@ const fcnlogin = () => {
                              <div class="space-x-8 sm:-my-px sm:flex mr-4 text-gray-300" style="margin-left: -15px;">
                                 <NavLinkHome 
                                 class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 hover:scale-110"
-                                href="https://app.dixiponto.com.br/dixiponto/login.jsf"
+                                href="/birthday"
                                 as="a"
                                 target="_blank">
                                     Aniversariantes

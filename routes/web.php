@@ -16,10 +16,17 @@ use App\Http\Controllers\Web\UserwebController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//initial page
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
+//access route to the information
 Route::get('/information', [PageController::class, 'information'])->name('information');
-Route::get('/extension', [PageController::class, 'extension'])->name('extension');
+//access route to the birthday
+Route::get('/birthday', [PageController::class, 'birthday'])->name('birthday');
+
+//access route to the link
+Route::get('/link', [PageController::class, 'link'])->name('link');
+
+//access route to the dashboard
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     //access route to the dashboard
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
@@ -28,4 +35,5 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/user', [UserwebController::class, 'index'])->name('user');
     //acess router user local
     Route::get('/userlocal', [UserwebController::class, 'userlocal'])->name('userlocal');
+   
 });

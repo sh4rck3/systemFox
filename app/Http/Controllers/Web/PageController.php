@@ -31,9 +31,15 @@ class PageController extends Controller
         return Inertia::render('Information');
         
     }
-    public function extension()
+    public function birthday()
     {
-        return Inertia::render('Extension');
+        return Inertia::render('Birthday');
+        
+    }
+
+    public function link()
+    {
+        return Inertia::render('Link');
         
     }
 }

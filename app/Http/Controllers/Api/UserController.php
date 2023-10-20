@@ -84,7 +84,7 @@ class UserController extends Controller
             ->orderBy($orderColumn, $orderDirection)
             ->paginate(10);
 
-            return EmployeeResource::collection($users);
+            return UserResource::collection($users);
     }
 
     public function indexhome()
@@ -98,7 +98,7 @@ class UserController extends Controller
         if (!in_array($orderDirection, ['asc', 'desc'])) {
             $orderDirection = 'desc';
         }
-        $users = Employee::
+        $users = User::
         when(request('search_id'), function ($query) {
             $query->where('id', request('search_id'));
         })
@@ -108,15 +108,49 @@ class UserController extends Controller
             })
             ->when(request('search_global'), function ($query) {
                 $query->where(function($q) {
-                    $q->where('id', request('search_global'))
-                        ->orWhere('name', 'like', '%'.request('search_global').'%');
+                    $q->where('name', 'like', '%'.request('search_global').'%')
+                    ->orWhere('jobtitle', 'like', '%'.request('search_global').'%');
 
                 });
             })
             ->orderBy($orderColumn, $orderDirection)
             ->paginate(5);
 
-            return EmployeeResource::collection($users);
+            return UserResource::collection($users);
+    }
+
+
+    public function birthday()
+    {
+     
+         //return UserResource::collection(User::all());
+         $orderColumn = request('order_column', 'created_at');
+         if (!in_array($orderColumn, ['id', 'name', 'created_at'])) {
+             $orderColumn = 'created_at';
+         }
+         $orderDirection = request('order_direction', 'desc');
+         if (!in_array($orderDirection, ['asc', 'desc'])) {
+             $orderDirection = 'desc';
+         }
+         $users = User::
+         when(request('search_id'), function ($query) {
+             $query->where('id', request('search_id'));
+         })
+             ->whereMonth('birthday', '=', date('m'))
+             ->when(request('search_title'), function ($query) {
+                 $query->where('name', 'like', '%'.request('search_title').'%');
+             })
+             ->when(request('search_global'), function ($query) {
+                 $query->where(function($q) {
+                     $q->where('name', 'like', '%'.request('search_global').'%')
+                     ->orWhere('jobtitle', 'like', '%'.request('search_global').'%');
+ 
+                 });
+             })
+             ->orderBy($orderColumn, $orderDirection)
+             ->paginate(10);
+ 
+            return UserResource::collection($users);
     }
 
     public function userssystem()
@@ -184,7 +218,7 @@ class UserController extends Controller
         curl_close($curl);
         $response = json_decode($response, true);
         $users = $response;
-
+        //sleep(5);
         foreach ($users as $key => $user) {
             if($this->usercheck($user) == false){
                 $this->useradd($user);
@@ -223,16 +257,28 @@ class UserController extends Controller
         }else{
             $role = 'standard';
         }
+        if($user['foxdatadenascimentofield'] != null){
+            $valstring = strlen($user['foxdatadenascimentofield']);
+            if($valstring == 10){
+                $birthday = explode('/', $user['foxdatadenascimentofield']);
+                $birthdayusa = $birthday[2] . '-' . $birthday[1] . '-' . $birthday[0];
+                
+            }else{
+                $birthdayusa = '1990-01-01';
+            }
+        }else{
+            $birthdayusa = '1990-01-01';
+        }
 
             $useradd = new User();
             $useradd->email = $user['email'];
             $useradd->status = $user['is_active'];
             $useradd->extension = $user['phone'];
-            $useradd->name = $user['firstname'] . '' . $user['realname'];
+            $useradd->name = $user['firstname'] . ' ' . $user['realname'];
             $useradd->jobtitle = $user['name'];
             $useradd->sector = $user['completename'];
             $useradd->document = $user['foxcpffield'];
-            $useradd->birthday = $user['foxdatadenascimentofield'];
+            $useradd->birthday = $birthdayusa;
             $useradd->password = Hash::make($hashpassword);
             $useradd->assignRole($role);
             $useradd->save();
@@ -243,15 +289,28 @@ class UserController extends Controller
         $userupdate = User::where('email', $user['email'])
                 //->where('status', '=', '1')
                 ->first();
+        if($user['foxdatadenascimentofield'] != null){
+            $valstring = strlen($user['foxdatadenascimentofield']);
+            if($valstring == 10){
+                $birthday = explode('/', $user['foxdatadenascimentofield']);
+                $birthdayusa = $birthday[2] . '-' . $birthday[1] . '-' . $birthday[0];
+                
+            }else{
+                $birthdayusa = '1990-01-01';
+            }
+        }else{
+            $birthdayusa = '1990-01-01';
+        }
+
         if($userupdate){
             $userupdate->email = $user['email'];
             $userupdate->status = $user['is_active'];
             $userupdate->extension = $user['phone'];
-            $userupdate->name = $user['firstname'] . '' . $user['realname'];
+            $userupdate->name = $user['firstname'] . ' ' . $user['realname'];
             $userupdate->jobtitle = $user['name'];
             $userupdate->sector = $user['completename'];
             $userupdate->document = $user['foxcpffield'];
-            $userupdate->birthday = $user['foxdatadenascimentofield'];
+            $userupdate->birthday = $birthdayusa;
             $userupdate->save();
         }
     }
