@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Web\PageController;
 use App\Http\Controllers\Web\UserwebController;
+use App\Http\Controllers\Web\SendsmswebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,9 @@ Route::get('/birthday', [PageController::class, 'birthday'])->name('birthday');
 
 //access route to the link
 Route::get('/link', [PageController::class, 'link'])->name('link');
+
+//acess router link sms controll
+Route::get('/sendsms', [SendsmswebController::class, 'index'])->name('sendsms');
 
 //access route to the dashboard
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
