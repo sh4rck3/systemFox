@@ -2,7 +2,7 @@
 
 import { Head, Link } from '@inertiajs/vue3';
 import AppLayoutHome from '@/Layouts/AppLayoutHome.vue';
-import Content from '../../Components/ContentSmsHome.vue';
+import Content from './Partials/Content.vue';
 
 
 defineProps({
@@ -14,7 +14,7 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Ramais" />
+    <Head title="SMS" />
     
     <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
         

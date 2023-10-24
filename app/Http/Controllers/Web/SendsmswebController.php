@@ -11,6 +11,6 @@ class SendsmswebController extends Controller
 {
     public function index()
     {
-       return Inertia::render('Sms/Information');
+       return Inertia::render('Sms/SendsmsIndex');
     }
 }
