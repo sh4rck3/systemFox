@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\SendsmsapiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,8 @@ Route::group(['middleware' => ['auth:sanctum', 'throttle:10000,1']], function ()
     Route::get('/usersupdate', [UserController::class, 'usersupdate'])->name('users.usersupdate');
      //users from list employees local
      Route::get('/userslocal', [UserController::class, 'userslocal'])->name('users.userslocal');
+
+     //send sms route
+     Route::apiResource('sendsmss', SendsmsapiController::class);
 });
 
